@@ -33,14 +33,13 @@ class Profile extends Component {
 	handleDelete = () => {
 		const id = this.props.profile.user.id
 		const jwt = this.props.jwt
-		const url = `${URL}/api/v1/users/${id}`
 		const configObj = {
 							method: 'DELETE',
 							headers: {
 								Authorization: `Bearer ${jwt}`
 							}
 						}
-						fetch(url,configObj)
+						fetch(`${URL}/api/v1/users/${id}`,configObj)
 							.then(response => response.json())
 							.then(data => {
 								this.props.deleteUser()
@@ -72,8 +71,7 @@ class Profile extends Component {
                           },
                           body:JSON.stringify(userObj)
                         }
-						const url = `${URL}/api/v1/users/${id}`
-                        fetch(url,configObj)
+                        fetch(`${URL}/api/v1/users/${id}`,configObj)
                           .then(resp => resp.json())
                           .then(data => {
                           	this.props.history.push('/home')

@@ -44,7 +44,6 @@ class FooterBarEdit extends Component {
 		const user_id = this.props.profile.user.id
 		const sequence_id = sequence.id
 		const jwt = this.props.jwt
-		const url = `${URL}/api/v1/users/${user_id}/sequences/${sequence_id}`
 		const configObj = {
 			method: 'PATCH',
 			headers: {
@@ -54,7 +53,7 @@ class FooterBarEdit extends Component {
 			},
 			body:JSON.stringify(sequence)
 		}
-		fetch(url,configObj)
+		fetch(`${URL}/api/v1/users/${user_id}/sequences/${sequence_id}`,configObj)
 			.then(resp => resp.json())
 			.then(data => {
 				this.props.loadusersequences(data)
@@ -82,8 +81,6 @@ class FooterBarEdit extends Component {
 							</Col>	
 						</FormGroup>
 					</Form>
-					
-					
 				</Row>
 		</Container>
 		)
