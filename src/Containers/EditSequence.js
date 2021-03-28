@@ -13,8 +13,8 @@ import { Container, Row, Col } from 'reactstrap'
 const mapStateToProps = state => {
   return {
     categories: state.categories,
-	categorylabel: state.categorylabel,
-	sortasanas: state.sortasanas
+		categorylabel: state.categorylabel,
+		sortasanas: state.sortasanas
   }
 }
 

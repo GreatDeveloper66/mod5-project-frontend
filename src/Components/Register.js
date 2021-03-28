@@ -8,6 +8,7 @@ import UserName from './username'
 import ConfirmPassword from './ConfirmPassword'
 import fetch from 'isomorphic-fetch'
 import RenderProfileAction from '../actions/renderprofile'
+import { URL } from '../URL'
 
 const mapStateToProps = state => {
   return {
@@ -62,7 +63,7 @@ class Register extends Component {
       },
       body: JSON.stringify(userObj)
     }
-    fetch(`http://localhost:5000/api/v1/users`,configObj)
+    fetch(`${URL}/api/v1/users`,configObj)
       .then(resp => resp.json())
       .then(data => {
           this.props.registerUser(data.jwt)

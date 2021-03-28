@@ -7,8 +7,7 @@ import UserName from '../Components/username'
 import LogOutUserAction from '../actions/logoutuser'
 import SavedSequences from '../Components/SavedSequences'
 import NavBar from '../Components/NavBar'
-
-const URL = process.env.REACT_APP_API_URL
+import { URL } from '../URL'
 
 const mapStateToProps = state => {
   return {
