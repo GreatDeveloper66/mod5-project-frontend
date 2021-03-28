@@ -8,13 +8,14 @@ import UserName from './username'
 import ConfirmPassword from './ConfirmPassword'
 import fetch from 'isomorphic-fetch'
 import RenderProfileAction from '../actions/renderprofile'
+import LoadCategoriesAction from '../actions/loadcategories'
 import { URL } from '../URL'
 
 const mapStateToProps = state => {
   return {
     jwt: state.jwt,
-	loginmessage: state.loginmessage,
-	profile: state.profile
+		loginmessage: state.loginmessage,
+		profile: state.profile
   }
 }
 
@@ -25,7 +26,10 @@ const mapDispatchToProps = dispatch => {
     },
 	renderprofile: profile => {
 			dispatch(RenderProfileAction(profile))
-	}
+		},
+		loadcategories: categories => {
+			dispatch(LoadCategoriesAction(categories))
+		}
   }
 }
 class Register extends Component {
@@ -67,8 +71,8 @@ class Register extends Component {
       .then(resp => resp.json())
       .then(data => {
           this.props.registerUser(data.jwt)
-		  this.props.renderprofile({user: {id: data.user.id,email: data.user.email,username: data.user.username}})
-		  this.props.history.push('/home')
+		  		this.props.renderprofile({user: {id: data.user.id,email: data.user.email,username: data.user.username}})
+		  		this.props.history.push('/home')
         })
 				fetch(`${URL}/api/v1/categories`,{headers: {Authorization: `Bearer ${this.props.jwt}`}})
 						.then(resp => resp.json())
