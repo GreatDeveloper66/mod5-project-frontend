@@ -74,15 +74,8 @@ class Register extends Component {
 		  		this.props.renderprofile({user: {id: data.user.id,email: data.user.email,username: data.user.username}})
 		  		this.props.history.push('/home')
         })
-			.finally(function() {
-					fetch(`${URL}/api/v1/categories`,{headers: {Authorization: `Bearer ${this.props.jwt}`}})
-						.then(resp => resp.json())
-						.then(data => {
-							this.props.loadcategories(data)
-						})
-					}
-				)
-  		}
+
+				
 	bannerStyle = () => ({
 		backgroundImage: `url(${require(`../images/Yogi_Background_C.jpg`)})`,
 		backgroundPosition: 'center',
