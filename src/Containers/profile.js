@@ -29,6 +29,15 @@ class Profile extends Component {
 	constructor(props){
 		super()
 	}
+
+  componentDidMount() {
+    fetch(`${URL}/api/v1/users/${this.props.profile.user.id}/sequences`,{headers: {Authorization: `Bearer ${this.props.jwt}`}})
+					.then(resp => resp.json())
+					.then(data => {
+						this.props.loadusersequences(data)
+						this.props.history.push('/home')
+				})
+  }
 	                   
 	handleDelete = () => {
 		const id = this.props.profile.user.id

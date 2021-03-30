@@ -36,7 +36,7 @@ class NewSequence extends Component {
 		super()
 	}
 	
-	componentWillMount() {
+	componentDidMount() {
 		fetch(`${URL}/api/v1/categories`,{headers: {Authorization: `Bearer ${this.props.jwt}`}})
 			.then(resp => resp.json())
 			.then(data => {

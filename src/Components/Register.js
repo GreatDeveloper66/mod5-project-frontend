@@ -43,7 +43,6 @@ class Register extends Component {
 	
  handleRegistration = event => {
     event.preventDefault();
-    // const host = runtimeEnv().REACT_APP_API_URL
     const email = event.target.email.value
     const username = event.target.username.value
     const password = event.target.password.value
