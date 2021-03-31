@@ -83,12 +83,16 @@ class SignIn extends Component {
 			if(data.successfulLogin){
 				this.props.logInUser(data.jwt, '')
 				this.props.renderprofile({user: {id: data.user.id,email: data.user.email,username: data.user.username}})
-				
+				this.props.history.push('/home')
 			}
 			else {
 				this.props.logInUser('','Incorrect UserName and/or Password. Try Again')
 			}
     })
+		.catch(error => {
+			this.props.logInUser('', JSON.stringify(error))
+			this.props.history.push('/')
+		})
 }
 
 

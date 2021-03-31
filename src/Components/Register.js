@@ -73,6 +73,13 @@ class Register extends Component {
 		  		this.props.renderprofile({user: {id: data.user.id,email: data.user.email,username: data.user.username}})
 		  		this.props.history.push('/home')
         })
+				.catch(error => {
+					this.setState({
+						registerMessage: JSON.stringify(error)
+					})
+					this.props.history.push('/Register')
+				})
+			}
 
 				
 	bannerStyle = () => ({
@@ -116,10 +123,11 @@ class Register extends Component {
 		</div>
 		)
 		
-		
+	}
 		
 	}
   
-}
+
+
 
 export default connect(mapStateToProps,mapDispatchToProps)(Register)
