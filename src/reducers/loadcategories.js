@@ -14,7 +14,7 @@ export default CategoriesReducer
 */
 
 
-const LoadCategoriesReducer = (state = { categories: [] }, action) => {
+const LoadCategoriesReducer = (state = [] , action) => {
   switch (action.type) {
     case 'loadcategories':
       return action.categories

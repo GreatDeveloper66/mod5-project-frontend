@@ -9,6 +9,7 @@ import ClearSequenceAction from '../actions/clearsequence'
 import { Container, Row, Col} from 'reactstrap'
 import AsanaCategories from '../Containers/AsanaCategories'
 import LoadCategoriesAction from '../actions/loadcategories';
+import { URL } from '../URL'
 
 const mapStateToProps = state => {
   return {
@@ -42,8 +43,8 @@ class NewSequence extends Component {
 			.then(data => {
 				this.props.clearsequence()
 				this.props.loadcategories(data)
-		})
-	}
+			})
+		}
 
 	render(){
 		return(
