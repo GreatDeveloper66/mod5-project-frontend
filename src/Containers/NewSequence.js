@@ -44,6 +44,9 @@ class NewSequence extends Component {
 				this.props.clearsequence()
 				this.props.loadcategories(data)
 			})
+			.catch(error => {
+				console.log(error)
+			})
 		}
 
 	render(){
