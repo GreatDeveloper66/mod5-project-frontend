@@ -43,7 +43,6 @@ class Register extends Component {
 	
  handleRegistration = event => {
     event.preventDefault();
-    // const host = runtimeEnv().REACT_APP_API_URL
     const email = event.target.email.value
     const username = event.target.username.value
     const password = event.target.password.value
@@ -74,15 +73,15 @@ class Register extends Component {
 		  		this.props.renderprofile({user: {id: data.user.id,email: data.user.email,username: data.user.username}})
 		  		this.props.history.push('/home')
         })
-			.finally(function() {
-					fetch(`${URL}/api/v1/categories`,{headers: {Authorization: `Bearer ${this.props.jwt}`}})
-						.then(resp => resp.json())
-						.then(data => {
-							this.props.loadcategories(data)
-						})
-					}
-				)
-  		}
+				.catch(error => {
+					this.setState({
+						registerMessage: JSON.stringify(error)
+					})
+					this.props.history.push('/Register')
+				})
+			}
+
+				
 	bannerStyle = () => ({
 		backgroundImage: `url(${require(`../images/Yogi_Background_C.jpg`)})`,
 		backgroundPosition: 'center',
@@ -124,10 +123,11 @@ class Register extends Component {
 		</div>
 		)
 		
-		
+	}
 		
 	}
   
-}
+
+
 
 export default connect(mapStateToProps,mapDispatchToProps)(Register)

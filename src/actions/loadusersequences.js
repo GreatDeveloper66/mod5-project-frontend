@@ -1,7 +1,7 @@
 const LoadUserSequencesAction = sequences => {
   return {
     type: 'loadsequences',
-	sequences: sequences
+	  sequences: sequences
   }
 }
 

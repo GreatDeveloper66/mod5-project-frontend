@@ -8,6 +8,7 @@ import LogOutUserAction from '../actions/logoutuser'
 import SavedSequences from '../Components/SavedSequences'
 import NavBar from '../Components/NavBar'
 import { URL } from '../URL'
+import LoadUserSequencesAction from '../actions/loadusersequences';
 
 const mapStateToProps = state => {
   return {
@@ -20,7 +21,10 @@ const mapDispatchToProps = dispatch => {
 	return {
 		deleteUser: () => {
 			dispatch(LogOutUserAction())
-		}
+		},
+    loadusersequences: sequences => {
+      dispatch(LoadUserSequencesAction(sequences))
+    }
 		
 	}
 }
@@ -29,6 +33,14 @@ class Profile extends Component {
 	constructor(props){
 		super()
 	}
+
+  componentDidMount() {
+    fetch(`${URL}/api/v1/users/${this.props.profile.user.id}/sequences`,{headers: {Authorization: `Bearer ${this.props.jwt}`}})
+					.then(resp => resp.json())
+					.then(data => {
+						this.props.loadusersequences(data)
+				})
+  }
 	                   
 	handleDelete = () => {
 		const id = this.props.profile.user.id
