@@ -1,7 +1,7 @@
 const LoadSequenceAction = sequence => {
   return {
     type: 'loadsequence',
-	sequence: sequence
+	  sequence: sequence
   }
 }
 

@@ -23,6 +23,8 @@ class YogaJumbotron extends Component {
 	constructor(props){
 		super()
 	}
+
+	
 	
 	bannerStyle = () => {
 		return ({
@@ -45,7 +47,7 @@ class YogaJumbotron extends Component {
 								return asanarray.find(asana => asana.sanskritname === asana_name)
 								})
 		
-		this.props.loadsequence({id:null, name: this.props.name,asanas: preset_asanas}) 
+		this.props.loadsequence({id: this.props.index, name: this.props.name,asanas: preset_asanas}) 
 		this.props.history.push('/sequences/view')
 	}
 	render(){
